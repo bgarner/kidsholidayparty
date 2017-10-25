@@ -55,42 +55,42 @@ for($i=1; $i<=$numberofkids; $i++ ){
 }
 
 
-// $file = 'log.txt';
+$file = 'log.txt';
 
-// // Open the file to get existing content
-// $current = file_get_contents($file);
+// Open the file to get existing content
+$current = file_get_contents($file);
 
-// // $current = $data;
-// $current .= "\n\n" . time();
-// $current .= "\nLast error: " . json_last_error();
-// $current .= "\nLast error message: " . json_last_error_msg();
-// $current .= "\n---------------------------------------------------\n";
-// $current .= "childname1" . $childname1 . "\n";
-// $current .= "childgender1" . $childgender1 . "\n";
-// $current .= "childage1" . $childage1 . "\n";
-// $current .= "childallergies1" . $childallergies1 . "\n";
-// $current .= "childname2" . $childname2 . "\n";
-// $current .= "childgender2" . $childgender2 . "\n";
-// $current .= "childage2" . $childage2 . "\n";
-// $current .= "childallergies2" . $childallergies2 . "\n";
-// $current .= "childname3" . $childname3 . "\n";
-// $current .= "childgender3" . $childgender3 . "\n";
-// $current .= "childage3" . $childage3 . "\n";
-// $current .= "childallergies3" . $childallergies3 . "\n";
-// $current .= "uid" . $uid . "\n";
-// $current .= "fname" . $fname . "\n";
-// $current .= "lname" . $lname . "\n";
-// $current .= "email" . $email . "\n";
-// $current .= "numberofadults" . $numberofadults . "\n";
-// $current .= "numberofkids" . $numberofkids . "\n";
+// $current = $data;
+$current .= "\n\n" . time();
+$current .= "\nLast error: " . json_last_error();
+$current .= "\nLast error message: " . json_last_error_msg();
+$current .= "\n---------------------------------------------------\n";
+$current .= "childname1" . $childname1 . "\n";
+$current .= "childgender1" . $childgender1 . "\n";
+$current .= "childage1" . $childage1 . "\n";
+$current .= "childallergies1" . $childallergies1 . "\n";
+$current .= "childname2" . $childname2 . "\n";
+$current .= "childgender2" . $childgender2 . "\n";
+$current .= "childage2" . $childage2 . "\n";
+$current .= "childallergies2" . $childallergies2 . "\n";
+$current .= "childname3" . $childname3 . "\n";
+$current .= "childgender3" . $childgender3 . "\n";
+$current .= "childage3" . $childage3 . "\n";
+$current .= "childallergies3" . $childallergies3 . "\n";
+$current .= "uid" . $uid . "\n";
+$current .= "fname" . $fname . "\n";
+$current .= "lname" . $lname . "\n";
+$current .= "email" . $email . "\n";
+$current .= "numberofadults" . $numberofadults . "\n";
+$current .= "numberofkids" . $numberofkids . "\n";
 
 
-// foreach($_POST as $key => $value){
+foreach($_POST as $key => $value){
 
-// 	$current .= $key . ": " . $value . "\n\n";
-// }
+	$current .= $key . ": " . $value . "\n\n";
+}
 
-// file_put_contents($file, $current);
+file_put_contents($file, $current);
 
 
 

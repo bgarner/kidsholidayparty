@@ -1,3 +1,30 @@
+<?php
+
+//connect to DB
+$host = "127.0.0.1";
+$user = "root";
+$pass = "root";
+$db = "kidsparty";
+
+$connection = mysqli_connect($host, $user, $pass, $db);
+
+if (mysqli_connect_errno()) {
+    printf("Connect failed: %s\n", mysqli_connect_error());
+    exit();
+}
+
+$q = "SELECT (select count(*) from kids) + (select sum(numberofadults) from parents) as count";
+$result = mysqli_query($connection, $q) or die ("Error in query: $q. ".mysqli_error($connection));
+$r = $result->fetch_assoc();
+
+$count = $r['count'];
+
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -6,7 +33,7 @@
     <head>
 	<meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>2015 FGL Kid's Holiday Party</title>
+        <title>2017 FGL Kid's Holiday Party</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -28,9 +55,13 @@
 
 			<div id="form-div">
 			<div id="subheading">
-				<h4>2015 FGL Kids' Holiday Party</h4>
-				<h5>December 12, 2015 &nbsp;&nbsp;&nbsp;&mdash;&nbsp;&nbsp;&nbsp;&nbsp; 11:00 – 2:00  &nbsp;&nbsp;&nbsp;&mdash;&nbsp;&nbsp;&nbsp;&nbsp; FGL Head Office</h5>
+				<h4>2017 FGL Kids' Holiday Party</h4>
+				<h5>November 19, 2017 &nbsp;&nbsp;&nbsp;&mdash;&nbsp;&nbsp;&nbsp;&nbsp; 8:30AM – 12:00PM  &nbsp;&nbsp;&nbsp;&mdash;&nbsp;&nbsp;&nbsp;&nbsp; <a target="_blank" href="https://www.google.ca/maps/place/Deerfoot+Inn+%26+Casino/@50.9495439,-113.9831875,15z/data=!4m5!3m4!1s0x0:0x1a1955ecb48ca993!8m2!3d50.9495439!4d-113.9831875">Deerfoot Inn</a></h5>
+				<center><p>Space is limted, availability is first come, first serve.</p></center>
 			</div>
+			<?php
+			if($count < 400){
+			?>
 				<form id="regform">
 
 					<script type="text/javascript">
@@ -60,7 +91,13 @@
 						
 						<tr>
 							<td colspan="3"><label id="label-adult-number"><span class="req">*</span>Number of Adults Attending</label></td>
-							<td colspan="1"><input type="text" class="form-control" id="numberofadults" name="numberofadults" style="width: 40px;"></input></td>
+							<td colspan="1">
+								<!-- <input type="text" class="form-control" id="numberofadults" name="numberofadults" style="width: 40px;"></input> -->
+							    <select class="form-control" name="numberofadults" id="numberofadults">
+								  <option value="1">1</option>
+								  <option value="2">2</option>
+								</select>
+							</td>
 						</tr>
 						
 
@@ -77,6 +114,14 @@
 					<div id="sendemail"></div>
 					<button type="" class="btnsubmit" id="formsubmit">Send Registration</button>
 				</form>
+			<?php 
+			} else {
+			?>
+				<h2>Registration is Full</h2>
+				
+			<?php
+			}
+			?>
 			</div>
 		
 		</div>
@@ -119,7 +164,7 @@
 		<!-- <script type="text/javascript" src="/js/contact.js"></script> -->
 		<script type="text/javascript" src="/js/jquery.backstretch.min.js"></script>
 		<script type="text/javascript">
-		  $.backstretch("/images/maxresdefault.jpg");
+		  $.backstretch("/images/candycanes.jpg");
 		</script>
 		
 

@@ -203,6 +203,16 @@ h5{
 	text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.3);
 }
 
+h5 a{
+	color: #fff;
+	text-decoration: underline;
+}
+
+h5 a:hover, h5 a:visited{
+	color: #fff;
+}
+
+
 p{ font-family: arial, sans-serif; color: #fff; }
 p.instruction{ color: #aaa; font-size: 13px; padding: 5px 0px 10px 0px; }
 strong{ color: #fff; }
