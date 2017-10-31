@@ -61,7 +61,7 @@ $count = $r['total'];
 				<center><h3>Space is limted, availability is first come, first serve.</h3></center>
 			</div>
 			<?php
-			if($count < 400){
+			if($count < 300){
 			?>
 				<form id="regform">
 
