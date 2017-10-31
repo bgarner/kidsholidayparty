@@ -1,7 +1,12 @@
 <?php
 
 //connect to DB
-$host = "127.0.0.1";
+// $host = "calmys1db01.fglsports.dmz";
+// $user = "kidsparty";
+// $pass = "kidsparty";
+// $db = "kidsparty";
+
+$host = "localhost";
 $user = "root";
 $pass = "root";
 $db = "kidsparty";
@@ -13,15 +18,11 @@ if (mysqli_connect_errno()) {
     exit();
 }
 
-$q = "SELECT (select count(*) from kids) + (select sum(numberofadults) from parents) as count";
+$q = "select (select sum(numberofadults) from parents) + (select count(*) from kids) as total";
 $result = mysqli_query($connection, $q) or die ("Error in query: $q. ".mysqli_error($connection));
 $r = $result->fetch_assoc();
 
-$count = $r['count'];
-
-
-
-
+$count = $r['total'];
 
 ?>
 
@@ -57,7 +58,7 @@ $count = $r['count'];
 			<div id="subheading">
 				<h4>2017 FGL Kids' Holiday Party</h4>
 				<h5>November 19, 2017 &nbsp;&nbsp;&nbsp;&mdash;&nbsp;&nbsp;&nbsp;&nbsp; 8:30AM – 12:00PM  &nbsp;&nbsp;&nbsp;&mdash;&nbsp;&nbsp;&nbsp;&nbsp; <a target="_blank" href="https://www.google.ca/maps/place/Deerfoot+Inn+%26+Casino/@50.9495439,-113.9831875,15z/data=!4m5!3m4!1s0x0:0x1a1955ecb48ca993!8m2!3d50.9495439!4d-113.9831875">Deerfoot Inn</a></h5>
-				<center><p>Space is limted, availability is first come, first serve.</p></center>
+				<center><h3>Space is limted, availability is first come, first serve.</h3></center>
 			</div>
 			<?php
 			if($count < 400){
@@ -107,7 +108,7 @@ $count = $r['count'];
 					<h1 id="activity-header">Children Information</h1>
 						<input type="hidden" name="kids" id="kids" value="0" />
 
-						<p>ADD A CHILD <button type="button" class="btn btn-default btn-xs addButton"><i class="fa fa-plus"></i></button></p>
+						<p class="addchild">ADD A CHILD <button type="button" class="btn btn-default btn-xs addButton"><i class="fa fa-plus"></i></button></p>
 
 						<div id="kidspace"></div>
 					<br />

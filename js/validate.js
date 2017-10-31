@@ -96,7 +96,14 @@ $(document).ready(function() {
             }
 
 
+
             var kids = $("#kids").val();
+
+            if(kids < 1){
+                $("p.addchild").css('color', '#c00')
+                hasError = true;   
+            }
+
             var kiddata = "{";
 
             for (var i = 1; i <= kids; i++) {
@@ -105,6 +112,17 @@ $(document).ready(function() {
                 var kidgenderval = $("#childgender"+i).val();
                 var kidageval = $("#childage"+i).val();
                 var kidallergiesval = $("#childallergies"+i).val();
+
+                if(kidnameval == ""){
+                    $("#childname"+i).css('border', 'thick solid #c00');
+                    hasError = true;                       
+                }
+
+                if(kidageval == ""){
+                    $("#childage"+i).css('border', 'thick solid #c00');
+                    hasError = true;                       
+                }
+
 
                 kiddata = kiddata + '"childname'+i+'": "'+kidnameval+'", "childgender'+i+'": "'+kidgenderval+'", "childage'+i+'": "'+ kidageval+'", "childallergies'+i+'": "'+ kidallergiesval+'", ';  
             }
